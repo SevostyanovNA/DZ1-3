@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 
-
 typedef struct node{
     int val; // Just value
     struct node* next; // Points to the next node
@@ -59,18 +58,18 @@ void push(node_t** head, int data) {
 }
 
 void pop(node_t** head) {
-    node_t* prev = NULL;
-    if (head == NULL) { // IF ITS NOT THE LAST ONE
-        printf("This node can not be deleted");
-        exit(0);
+    node_t* deleted = NULL; //Sozdal ukazatel, chtoby pochistit' po nemu pamyat'
+    if ((*head)->next == NULL) {
+        printf("No object to delete\n");
+        return;
     }
-    prev = *head;
+    deleted = *head;
     *head = (*head)->next;
-    free(prev); // Free the memory of a deleted node
+    free(deleted); // Free the memory of a deleted node
 }
 
 void list(node_t* head) {
-    if (head->next ==0) printf("No objects in a list");
+    if (head->next ==0) printf("No objects in a list\n");
     while (head->next !=0) {
         printf("%d ", head->val);
         head = head->next;
