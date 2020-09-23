@@ -9,7 +9,7 @@ typedef struct node{
 
 //Functions
 
-void push(node_t **head, int data); //Add a node
+void push(node_t **head, int value); //Add a node
 void pop(node_t** head); //Delete the "top" node
 void list(node_t* head); //Just... List IDK
 
@@ -50,19 +50,19 @@ int main(void) {
     return (0);
 }
 
-void push(node_t** head, int data) {
+void push(node_t** head, int value) {
     node_t* tmp = (node_t*)calloc(sizeof(node_t),1);
-    tmp->val = data;
+    tmp->val = value;
     tmp->next = *head;
     *head = tmp;
 }
 
 void pop(node_t** head) {
-    node_t* deleted = NULL; //Sozdal ukazatel, chtoby pochistit' po nemu pamyat'
     if ((*head)->next == NULL) {
         printf("No object to delete\n");
         return;
     }
+    node_t* deleted = NULL; //Sozdal ukazatel, chtoby pochistit' po nemu pamyat'
     deleted = *head;
     *head = (*head)->next;
     free(deleted); // Free the memory of a deleted node
