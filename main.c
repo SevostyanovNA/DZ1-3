@@ -11,7 +11,7 @@ typedef struct node{
 
 void push(node_t **head, int value); //Add a node
 void pop(node_t** head); //Delete the "top" node
-void list(node_t* head); //Just... List IDK
+void list(node_t* head); 
 
 
 int main(void) {
@@ -62,7 +62,7 @@ void pop(node_t** head) {
         printf("No object to delete\n");
         return;
     }
-    node_t* deleted = NULL; //Sozdal ukazatel, chtoby pochistit' po nemu pamyat'
+    node_t* deleted = NULL; //Create a pointer to free the memory
     deleted = *head;
     *head = (*head)->next;
     free(deleted); // Free the memory of a deleted node
